@@ -13,7 +13,7 @@ cat << EOF > $METADATA
         "$TOKEN_NAME": {
             "image": "ipfs://QmWjjP1uaJeQsHum3rG7gqATpWeV4W5VaRPdxiM7pky5CT",
             "name": "$TOKEN_NAME",
-            "description": "This NFT was minted by using the code from $github.branch"
+            "description": "This NFT was minted by using the code from https://github.com/MitchyCola/burn-ada, with the token name being the HEAD branch hash."
             }
         }
     }
