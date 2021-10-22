@@ -1,0 +1,21 @@
+name: Generate Random Address
+on: 
+  workflow_dispatch:
+
+# TODO: Create a job that will create a fork of the GitHub repository.
+jobs:
+  run_scripts:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+    steps:
+    - name: Run script files
+    - id: step1
+      run: |
+         chmod +x rando-addr.sh
+         ./rando-addr.sh
+      shell: bash
+      working-directory: res/scripts
+  pull_request:
+    needs: run_scripts
+    runs-on: ubuntu-latest
