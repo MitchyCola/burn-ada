@@ -25,6 +25,7 @@ jobs:
          ./res/scripts/build-tx-script.sh
       shell: bash
     - name: Upload Artifacts
+    - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
           path: ./res/cache
