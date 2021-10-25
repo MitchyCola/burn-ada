@@ -7,9 +7,11 @@ jobs:
   run_scripts:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
-    - name: Run script files
+      run: git checkout HEAD^
+    - name: Run Script Files
+      uses: ./res/bin
       run: |
          chmod +x ./res/scripts/rando-addr.sh
          chmod +x ./res/scripts/token-name.sh
@@ -22,8 +24,8 @@ jobs:
          ./res/scripts/gen-metadata.sh
          ./res/scripts/build-tx-script.sh
       shell: bash
-    - name: Upload artifacts
-      uses: actions/upload-artifacts@v2
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
       with:
           path: ./res/cache
   # pull_request:
