@@ -6,16 +6,26 @@ on:
 jobs:
   run_scripts:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
     - name: Run script files
-    - id: step1
       run: |
-         chmod +x rando-addr.sh
-         ./rando-addr.sh
+         chmod +x ./res/scripts/rando-addr.sh
+         chmod +x ./res/scripts/token-name.sh
+         chmod +x ./res/scripts/gen-policyID.sh
+         chmod +x ./res/scripts/gen-metadata.sh
+         chmod +x ./res/scripts/build-tx-script.sh
+         ./res/scripts/rando-addr.sh
+         ./res/scripts/token-name.sh
+         ./res/scripts/gen-policyID.sh
+         ./res/scripts/gen-metadata.sh
+         ./res/scripts/build-tx-script.sh
       shell: bash
-      working-directory: res/scripts
-  pull_request:
-    needs: run_scripts
-    runs-on: ubuntu-latest
+    - name: Upload artifacts
+      uses: actions/upload-artifacts@v2
+      with:
+          path: ./res/cache
+  # pull_request:
+  #   needs: run_scripts
+  #   runs-on: ubuntu-latest
