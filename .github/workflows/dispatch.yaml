@@ -12,11 +12,7 @@ jobs:
     - name: Run Script Files
       working-directory: ./res/scripts
       run: |
-         chmod +x rando-addr.sh
-         chmod +x token-name.sh
-         chmod +x gen-policyID.sh
-         chmod +x gen-metadata.sh
-         chmod +x build-tx-script.sh
+         chmod +x `ls *.sh`
          ./rando-addr.sh
          ./token-name.sh
          ./gen-policyID.sh
