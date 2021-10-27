@@ -1,4 +1,4 @@
-name: Generate Random Address
+name: Generate Burn Address and NFT Minting Tx
 on: 
   workflow_dispatch
 
@@ -22,13 +22,27 @@ jobs:
   run_scripts:
     runs-on: ubuntu-latest
     steps:
+    
     - name: Checkout Repository
       uses: actions/checkout@v2
+      
     - name: Setup Haskell
       uses: haskell/actions/setup@v1
       with:
         ghc-version: '8.10.1'
         cabal-version: '2.4'
+        
+    - name: Generate Token Name
+      working-directory: ./res/scripts
+      run: |
+        chmod +x token-name.sh
+        ./token-name.sh
+      shell: bash
+        
+    - name: Compile Plutus Script
+      working-directory: ./res
+      run: cabal run burn-ada.cabal
+      
     - name: Run Script Files
       working-directory: ./res/scripts
       run: |
@@ -38,10 +52,11 @@ jobs:
          ./gen-metadata.sh
          ./build-tx-script.sh
       shell: bash
+      
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Archive Outputs
+        name: Archived Outputs
         path: ./res/cache
   #  - name: Rename Local Branch
   #    run: git branch -m <auto-branch>
