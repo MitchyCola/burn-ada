@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      run: git checkout HEAD^
+      run: git checkout -b <auto-branch>
     - name: Run Script Files
       uses: ./res/bin
       run: |
@@ -27,7 +27,8 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-          path: ./res/cache
+        name: Archive Outputs
+        path: ./res/cache
   # pull_request:
   #   needs: run_scripts
   #   runs-on: ubuntu-latest
