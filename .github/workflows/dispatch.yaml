@@ -10,6 +10,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Run Script Files
+      working-directory: ./res/bin
       run: |
          chmod +x ./res/scripts/rando-addr.sh
          chmod +x ./res/scripts/token-name.sh
