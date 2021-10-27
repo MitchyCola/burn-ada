@@ -25,7 +25,7 @@ jobs:
         ./autogen.sh
         ./configure
         make
-        make install
+        sudo make install
         
     - name: Generate Token Name
       working-directory: ./res/scripts
