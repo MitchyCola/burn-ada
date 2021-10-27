@@ -16,7 +16,7 @@ jobs:
       uses: haskell/actions/setup@v1
       with:
         ghc-version: '8.10.7'
-        cabal-version: '3.6.1.0'
+        cabal-version: 'latest'
         
     - name: Generate Token Name
       working-directory: ./res/scripts
