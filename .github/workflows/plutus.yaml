@@ -6,14 +6,13 @@ jobs:
   compile_plutus_script:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-    - name: Setup Haskell
-      uses: actions/setup-haskell@v1
-      with:
-        ghc-version: '8.10.4'
-        cabal-version: '2.4'
-
+    - name: Setup Environment
+      uses: |
+        actions/checkout@v2
+        actions/setup-haskell@v1
+        with:
+          ghc-version: '8.10.4'
+          cabal-version: '2.4'
     - name: Cabal Run
       working-directory: ./res
       run: cabal run burn-ada.cabal
