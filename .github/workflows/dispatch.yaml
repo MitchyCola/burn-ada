@@ -1,6 +1,6 @@
 name: Generate Random Address
 on: 
-  workflow_dispatch:
+  workflow_dispatch
 
 # TODO: Create a job that will create a fork of the GitHub repository.
 jobs:
