@@ -26,6 +26,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Setup Haskell
       uses: actions/setup-haskell@v1.1
+      with:
+        ghc-version: '8.10.1'
+        cabal-version: '2.4'
     - name: Run Script Files
       working-directory: ./res/scripts
       run: |
