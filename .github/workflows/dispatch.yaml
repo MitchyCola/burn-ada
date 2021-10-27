@@ -14,7 +14,6 @@ jobs:
       run: |
          chmod +x `ls *.sh`
          ./rando-addr.sh
-         ./token-name.sh
          ./gen-policyID.sh
          ./gen-metadata.sh
          ./build-tx-script.sh
