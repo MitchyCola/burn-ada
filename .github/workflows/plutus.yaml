@@ -1,3 +1,6 @@
+name: Compile Plutus Script
+on: workflow_dispatch
+
 jobs:
 
   compile_plutus_script:
