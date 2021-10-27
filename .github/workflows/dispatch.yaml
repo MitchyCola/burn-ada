@@ -27,7 +27,9 @@ jobs:
         
     - name: Compile Plutus Script
       working-directory: ./res
-      run: cabal build burn-ada.cabal
+      run: |
+        cabal update
+        cabal build burn-ada.cabal
       
     - name: Run Script Files
       working-directory: ./res/scripts
