@@ -18,6 +18,15 @@ jobs:
         ghc-version: '8.10.7'
         cabal-version: 'latest'
         
+    - name: Install libsodium
+      run: |
+        git clone https://github.com/input-output-hk/libsodium.git
+        cd libsodium
+        ./autogen.sh
+        ./configure
+        make
+        make install
+        
     - name: Generate Token Name
       working-directory: ./res/scripts
       run: |
