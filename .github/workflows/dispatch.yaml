@@ -9,9 +9,9 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      run: git checkout -b <auto-branch>
+      with:
+        ref: HEAD
     - name: Run Script Files
-      uses: ./res/bin
       run: |
          chmod +x ./res/scripts/rando-addr.sh
          chmod +x ./res/scripts/token-name.sh
@@ -29,6 +29,8 @@ jobs:
       with:
         name: Archive Outputs
         path: ./res/cache
+    - name: Rename Local Branch
+      run: git branch -m <auto-branch>
   # pull_request:
   #   needs: run_scripts
   #   runs-on: ubuntu-latest
