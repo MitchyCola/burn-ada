@@ -5,25 +5,27 @@ on:
 # TODO: Create a job that will create a fork of the GitHub repository.
 jobs:
 
-  compile_plutus_script:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Environment Setup
-    - uses: actions/checkout@v2
-    - uses: actions/setup-haskell@v1
-      with:
-        ghc-version: '8.10.4'
-        cabal-version: '2.4'
+  #compile_plutus_script:
+   # runs-on: ubuntu-latest
+    #steps:
+    #- name: Environment Setup
+    #- uses: actions/checkout@v2
+    #- uses: actions/setup-haskell@v1
+      #with:
+        #ghc-version: '8.10.4'
+        #cabal-version: '2.4'
 
-    - name: Cabal Run
-      working-directory: ./res
-      run: cabal run burn-ada.cabal
+    #- name: Cabal Run
+      #working-directory: ./res
+      #run: cabal run burn-ada.cabal
 
   run_scripts:
     runs-on: ubuntu-latest
     steps:
-#    - name: Checkout Repository
-#      uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Setup Haskell
+      uses: actions/setup-haskell@v1.1
     - name: Run Script Files
       working-directory: ./res/scripts
       run: |
