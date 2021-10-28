@@ -19,7 +19,7 @@ jobs:
         cabal-version: 'latest'
     
     - name: Install packages
-      run: sudo apt install systemd-devel ncurses-devel ncurses-compat-libs -y
+      run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev -y
     
     - name: Install libsodium
       run: |
