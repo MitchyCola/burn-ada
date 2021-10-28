@@ -1,11 +1,9 @@
 name: Generate Burn Address and NFT Minting Tx
-on: 
-  workflow_dispatch
+on: workflow_dispatch
 
-# TODO: Create a job that will create a fork of the GitHub repository.
 jobs:
 
-  run_scripts:
+  build:
     runs-on: ubuntu-latest
     steps:
     
@@ -20,15 +18,6 @@ jobs:
     
     - name: Install Packages
       run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev libsodium-dev -y
-    
-    #- name: Install libsodium
-      #run: |
-        #git clone https://github.com/input-output-hk/libsodium.git
-        #cd libsodium
-        #./autogen.sh
-        #./configure
-        #make
-        #sudo make install
         
     - name: Generate Token Name
       working-directory: ./res/scripts
@@ -59,8 +48,8 @@ jobs:
         name: Archived Outputs
         path: ./res/cache
         
-  #  - name: Rename Local Branch
-  #    run: git branch -m <auto-branch>
-  # pull_request:
-  #   needs: run_scripts
-  #   runs-on: ubuntu-latest
+    - name: Rename Local Branch
+      run: git branch -m <auto-branch>
+  
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
