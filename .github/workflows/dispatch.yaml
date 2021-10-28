@@ -18,8 +18,8 @@ jobs:
         ghc-version: '8.10.7'
         cabal-version: 'latest'
     
-    - name: Install systemd
-      run: sudo apt install systemd
+    - name: Install packages
+      run: sudo apt install systemd-devel ncurses-devel ncurses-compat-libs -y
     
     - name: Install libsodium
       run: |
