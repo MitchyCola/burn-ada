@@ -18,17 +18,17 @@ jobs:
         ghc-version: '8.10.7'
         cabal-version: 'latest'
     
-    - name: Install packages
-      run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev -y
+    - name: Install Packages
+      run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev libsodium-dev -y
     
-    - name: Install libsodium
-      run: |
-        git clone https://github.com/input-output-hk/libsodium.git
-        cd libsodium
-        ./autogen.sh
-        ./configure
-        make
-        sudo make install
+    #- name: Install libsodium
+      #run: |
+        #git clone https://github.com/input-output-hk/libsodium.git
+        #cd libsodium
+        #./autogen.sh
+        #./configure
+        #make
+        #sudo make install
         
     - name: Generate Token Name
       working-directory: ./res/scripts
