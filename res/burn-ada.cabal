@@ -54,11 +54,11 @@ library
 
   build-depends:        bytestring
                       , cardano-api
-                      -- , plutus-core
+                      , plutus-core
                       , plutus-ledger
                       , plutus-ledger-api
                       , plutus-tx
-                      -- , plutus-tx-plugin
+                      , plutus-tx-plugin
                       , serialise
 
   ghc-options: -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas
