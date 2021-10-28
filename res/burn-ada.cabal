@@ -12,7 +12,7 @@ extra-source-files:     README.md
 
 
 common base
-  build-depends: base >= 4.14 && < 4.15
+  build-depends: base >= 4.6 && < 4.15
 
 common project-config
   default-language:     Haskell2010
