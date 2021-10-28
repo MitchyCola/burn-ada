@@ -100,11 +100,6 @@ source-repository-package
 
 source-repository-package
   type: git
-  location: https://github.com/input-output-hk/Win32-network
-  tag: 3825d3abf75f83f406c1f7161883c438dac7277d
-
-source-repository-package
-  type: git
   location: https://github.com/input-output-hk/ouroboros-network
   tag: f149c1c1e4e4bb5bab51fa055e9e3a7084ddc30e
   subdir:
