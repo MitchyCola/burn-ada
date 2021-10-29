@@ -49,7 +49,9 @@ jobs:
         path: ./res/cache
         
     - name: Rename Local Branch
-      run: git branch -m <auto-branch>
-  
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: auto-branch
+        FOLDER: res/cache
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
