@@ -1,4 +1,7 @@
 #!/bin/bash
+
+NETWORK=$(cat $DIR/network.tag)
+
 cardano-cli query protocol-parameters \
-    --mainnet \
+    $NETWORK \
     --out-file "../cache/protocol-parameters.json"
