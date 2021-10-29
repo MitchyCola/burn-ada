@@ -1,9 +1,9 @@
 #!/bin/bash
 
-NETWORK="--testnet-magic 1097911063"
 CARDANO="../bin/./cardano-cli"
-
 DIR="../cache"
+
+NETWORK=$(cat $DIR/network.tag)
 
 MY_UTXO=$(cat $DIR/payment-delegated.utxo)
 LOVELACE=4168049
