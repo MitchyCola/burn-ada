@@ -1,5 +1,11 @@
 name: Generate Burn Address and NFT Minting Tx
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Cardano Network'
+        required: true
+        default: 'mainnet'
 
 jobs:
 
@@ -19,10 +25,13 @@ jobs:
     - name: Install Packages
       run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev libsodium-dev -y
         
-    - name: Generate Token Name
+    - name: Make Inputs for Plutus Script
       working-directory: ./res/scripts
       run: |
-        chmod +x token-name.sh
+        chmod +x `ls *.sh`
+        ./network-tag.sh ${{ github.event.inputs.tags }}
+        ./access-wallet.sh ${{ github.event.inputs.tags }}
+        ./rando-addr.sh
         ./token-name.sh
       shell: bash
         
@@ -32,11 +41,10 @@ jobs:
         cabal v2-update
         cabal v2-run burn-ada.cabal
       
-    - name: Run Script Files
+    - name: Build Transaction Script
       working-directory: ./res/scripts
       run: |
          chmod +x `ls *.sh`
-         ./rando-addr.sh
          ./gen-policyID.sh
          ./gen-metadata.sh
          ./build-tx-script.sh
@@ -48,10 +56,10 @@ jobs:
         name: Archived Outputs
         path: ./res/cache
         
-    - name: Rename Local Branch
+    - name: Push to New Branch
       uses: s0/git-publish-subdir-action@develop
       env:
         REPO: self
-        BRANCH: auto-branch
+        BRANCH: "${{ github.event.inputs.network }}-build"
         FOLDER: res/cache
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
