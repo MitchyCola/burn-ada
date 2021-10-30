@@ -29,7 +29,7 @@ jobs:
       working-directory: ./res/scripts
       run: |
         chmod +x `ls *.sh`
-        ./network-tag.sh ${{ github.event.inputs.tags }}
+        ./network-tag.sh "${{ github.event.inputs.tags }}"
         ./rando-addr.sh
         ./token-name.sh
       shell: bash
