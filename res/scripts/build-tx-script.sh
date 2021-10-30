@@ -5,8 +5,8 @@ DIR="../cache"
 
 NETWORK=$(cat $DIR/network.tag)
 
-MY_UTXO=$(cat $DIR/payment-delegated.utxo)
-LOVELACE=4168049
+MY_UTXO=$(cat $DIR/payment.utxo)
+LOVELACE=$(cat $DIR/payment.ada)
 
 RANDO_ADDR=$(cat $DIR/random.addr)
 
@@ -51,4 +51,5 @@ echo "Done."
 # Submit tx
 echo "Submiting Tx ..."
 $CARDANO transaction submit $NETWORK --tx-file $DIR/tx.sign
+echo "Done."
 EOF
