@@ -23,14 +23,13 @@ jobs:
         cabal-version: 'latest'
     
     - name: Install Packages
-      run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev libsodium-dev -y
+      run: sudo apt-get install libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev libsodium-dev jq -y
         
     - name: Make Inputs for Plutus Script
       working-directory: ./res/scripts
       run: |
         chmod +x `ls *.sh`
         ./network-tag.sh ${{ github.event.inputs.tags }}
-        ./access-wallet.sh ${{ github.event.inputs.tags }}
         ./rando-addr.sh
         ./token-name.sh
       shell: bash
