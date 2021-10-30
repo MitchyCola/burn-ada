@@ -11,7 +11,7 @@ main = do
     tokenNameFile <- SysIO.openFile "cache/token.name" ReadMode
     tokenName <-SysIO.hGetLine tokenNameFile
     SysIO.hClose tokenNameFile
-    utxoFile <- SysIO.openFile "cache/payment-delegated.utxo" ReadMode
+    utxoFile <- SysIO.openFile "cache/payment.utxo" ReadMode
     utxo' <- SysIO.hGetLine utxoFile
     SysIO.hClose utxoFile
 
