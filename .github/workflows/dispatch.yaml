@@ -29,7 +29,7 @@ jobs:
       working-directory: ./res/scripts
       run: |
         chmod +x `ls *.sh`
-        ./network-tag.sh "${{ github.event.inputs.tags }}"
+        ./network-tag.sh ${{ github.event.inputs.network }}
         ./rando-addr.sh
         ./token-name.sh
       shell: bash
@@ -59,6 +59,6 @@ jobs:
       uses: s0/git-publish-subdir-action@develop
       env:
         REPO: self
-        BRANCH: "${{ github.event.inputs.network }}-build"
+        BRANCH: '${{ github.event.inputs.network }}-build'
         FOLDER: res/cache
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
