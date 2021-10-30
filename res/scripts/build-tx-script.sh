@@ -19,7 +19,7 @@ TOKEN_AMOUNT=1
 METADATA="$DIR/metadata.json"
 
 # Build tx from address
-cat << EOF > submit-tx.sh
+cat << EOF > "$DIR/submit-tx.sh"
 #!/bin/bash
 
 # Build tx
