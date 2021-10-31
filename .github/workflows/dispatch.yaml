@@ -30,7 +30,7 @@ jobs:
       run: |
         chmod +x `ls *.sh`
         ./network-tag.sh ${{ github.event.inputs.network }}
-        ./rando-addr.sh
+        ./rando-addr.sh ${{ github.event.inputs.network }}
         ./token-name.sh
       shell: bash
         
