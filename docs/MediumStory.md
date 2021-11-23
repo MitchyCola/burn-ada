@@ -27,7 +27,7 @@ After looking into how I could derive a Cardano address, I found that IOHK provi
 
 Once I figured out the process for creating a burn address, I faced the issue of being able to create the address so that people can verify that I actually used the code that I wrote, and that I am not using an address that I own. As the saying goes in crypto "Trust, but verify". The issue was that I could not easily prove that the code that I execute on my local machine is the exact same code that is published on [my GitHub repository](https://github.com/MitchyCola/burn-ada). 
 
-I could have gotten the code signed and certified by a centralized entity, but it still would not have solved the issue of people needing to trust that I did everything above board. Also, this is crypto, and we do not take kindly to centralized entities. 
+There were other possible avenues, like getting the code signed and certified, but most of the time a centralized entity is needed for the certification. And that process is mostly used for deploying desktop applications. I believe that would not have solved the issue of people needing to trust that I did everything above board. Also, this is crypto, and we do not take kindly to centralized entities. 
 
 ![Alt text](We_dont_take_kindly.gif?raw=true)
 
@@ -46,7 +46,7 @@ I was testing the scripts that were used to build the transaction and to submit 
 ---
 
 ## Deployment 📦
-After the successful submission of the [transaction]() and creation of the [NFT](), now it is time to deliver the results to the people.
+After the successful submission of the [transaction](https://adatools.io/transactions/ee2b90b715a5a1ec030d5116933b466fa742fffa19a2597798f4c4ef7de2f8d3) and creation of the [NFT](https://adatools.io/assets/asset10ajm99533veg945mvladsfu638j33uke945z4j), now it is time to deliver the results to the people.
 
 I created a simple application with Flutter 🐦 so that people can share this with their Ethereum Maxi friends that are willing to burn any amount of Ada. 
 

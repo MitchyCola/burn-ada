@@ -13,6 +13,7 @@ const double defaultPadding = 10.0;
 const Duration defaultDuration = Duration(milliseconds: 300);
 const double border_thickness = 1.5;
 
-const String burn_addr = '1234567890';
+const String burn_addr =
+    'addr1v897wlewc4xpr6j42dwtkncwywhczslj6xksrm6xk867ydch5mxmf';
 const String dono_addr =
     "addr1qy550c09n9qdjuyjzakqmq3g38uwjkh3zm6x4sud3tc4w4gwzhx8sgcyq4jkn2u0zchn3qw0zj96j8xlkgw9lup6m96qlegg7j";
