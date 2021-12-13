@@ -8,6 +8,7 @@ import 'package:burn_ada/widgets/burn_info.dart';
 import 'package:burn_ada/widgets/donate_info.dart';
 import 'package:burn_ada/widgets/socal_buttons.dart';
 import 'package:swipe/swipe.dart';
+import 'package:burn_ada/widgets/burn_ticker.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({Key? key}) : super(key: key);
@@ -111,11 +112,13 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
                 AnimatedPositioned(
                   duration: defaultDuration,
                   width: _size.width,
-                  bottom: defaultPadding * 10, // 10%
+                  bottom: defaultPadding * 5, // 10%
                   right:
                       _isShowDonate ? -_size.width * 0.06 : _size.width * 0.06,
                   child: Column(
                     children: [
+                      BurnTicker(size: _size.width * 0.528),
+                      Padding(padding: EdgeInsets.all(defaultPadding * 0.4)),
                       Text(
                         "How it works:",
                         style: TextStyle(

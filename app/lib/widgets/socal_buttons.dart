@@ -1,3 +1,4 @@
+import 'package:burn_ada/widgets/so_cal_logos_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,13 +15,23 @@ class SocalButtons extends StatelessWidget {
         IconButton(
             onPressed: () =>
                 _launchURL('https://github.com/MitchyCola/burn-ada'),
-            icon: Image.asset("assets/github.png")),
+            icon: Icon(
+              SoCalLogos.github,
+              color: Colors.white,
+            )),
         IconButton(
-            onPressed: () => _launchURL('https://medium.com'),
-            icon: Image.asset("assets/medium.png")),
+            onPressed: () => _launchURL(
+                'https://mitchycola.medium.com/proof-of-burn-challenge-c8b18b7ca3f0'),
+            icon: Icon(
+              SoCalLogos.medium,
+              color: Colors.white,
+            )),
         IconButton(
-            onPressed: () => _launchURL('https://youtube.com'),
-            icon: Image.asset("assets/youtube.png")),
+            onPressed: () => _launchURL('https://youtu.be/zqDCiWGIyik'),
+            icon: Icon(
+              SoCalLogos.youtube,
+              color: Colors.white,
+            )),
       ],
     );
   }

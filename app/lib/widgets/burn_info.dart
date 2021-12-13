@@ -48,7 +48,7 @@ class BurnInfo extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
               width: _size * 0.6,
               child: Text(
-                "Send Ada to this address if you believe in ultrasound money 🦇",
+                "Send Ada to this address if you believe in ultra-sound money 🦇",
                 style: TextStyle(
                   color: message_text,
                   fontWeight: FontWeight.bold,

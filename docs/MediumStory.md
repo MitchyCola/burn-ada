@@ -63,7 +63,7 @@ I had fun with this project, it was definitely a good learning experience. There
 
 The code has finally reached to a point where I feel comfortable sharing the initial release. There are a few more stretch goals that I would like to acheive at some point in the future, but I want to move on to other things in the mean time. 
 
-If I peaked your interest qith this article, feel free to check the [YouTube video]() that I uploaded. This video briefly goes over the actual code and shows me submitting the initial transaction to the burn address.
+If I peaked your interest qith this article, feel free to check the [YouTube video](https://youtu.be/zqDCiWGIyik) that I uploaded. This video briefly goes over the actual code and shows me submitting the initial transaction to the burn address.
 
 Again, there is also [my GitHub repository](https://github.com/MitchyCola/burn-ada) if you want to sink your teeth into some code.
 

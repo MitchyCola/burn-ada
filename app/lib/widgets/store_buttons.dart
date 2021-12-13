@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:bordered_text/bordered_text.dart';
 
 class StoreButtons extends StatelessWidget {
   const StoreButtons({
@@ -8,15 +9,59 @@ class StoreButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Stack(
       children: [
-        IconButton(
-            onPressed: () => _launchURL('https://apple.com'),
-            icon: Image.asset("assets/app-store-badge.png")),
-        IconButton(
-            onPressed: () => _launchURL('https://google.com'),
-            icon: Image.asset("assets/google-play-badge.png")),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => null, //_launchURL('https://apple.com'),
+                child: Image.asset(
+                  "assets/app-store-badge.png",
+                  width: 175,
+                ),
+              ),
+            ),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => null, //_launchURL('https://google.com'),
+                child: Image.asset(
+                  "assets/google-play-badge.png",
+                  width: 150,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Center(
+          child: SizedBox(
+            width: 350,
+            height: 57,
+            child: DecoratedBox(
+              child: Center(
+                child: BorderedText(
+                  strokeWidth: 3,
+                  strokeColor: Colors.white,
+                  child: Text(
+                    "Coming Soon",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0x8036393F),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

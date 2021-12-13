@@ -5,6 +5,8 @@ import 'package:burn_ada/constants.dart';
 import 'package:burn_ada/widgets/burn_info.dart';
 import 'package:burn_ada/widgets/donate_info.dart';
 import 'package:burn_ada/widgets/socal_buttons.dart';
+import 'package:burn_ada/widgets/burn_ticker.dart';
+import 'package:burn_ada/widgets/store_buttons.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -46,6 +48,10 @@ class _LandingPageState extends State<LandingPage>
                     ),
                     textAlign: TextAlign.center,
                   ),
+
+                  Padding(padding: EdgeInsets.all(defaultPadding)),
+
+                  BurnTicker(size: 400),
 
                   Padding(padding: EdgeInsets.all(defaultPadding)),
 
@@ -135,6 +141,8 @@ class _LandingPageState extends State<LandingPage>
                         textAlign: TextAlign.center,
                       ),
                       SocalButtons(),
+                      Padding(padding: EdgeInsets.all(defaultPadding)),
+                      StoreButtons(),
                     ],
                   ),
                 ],
