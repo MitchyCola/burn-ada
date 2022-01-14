@@ -18,6 +18,7 @@ class SocalButtons extends StatelessWidget {
             icon: Icon(
               SoCalLogos.github,
               color: Colors.white,
+              size: 35,
             )),
         IconButton(
             onPressed: () => _launchURL(
@@ -25,12 +26,14 @@ class SocalButtons extends StatelessWidget {
             icon: Icon(
               SoCalLogos.medium,
               color: Colors.white,
+              size: 35,
             )),
         IconButton(
             onPressed: () => _launchURL('https://youtu.be/zqDCiWGIyik'),
             icon: Icon(
               SoCalLogos.youtube,
               color: Colors.white,
+              size: 35,
             )),
       ],
     );

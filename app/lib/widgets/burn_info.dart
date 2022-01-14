@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../constants.dart';
+import 'wallet_apps.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class BurnInfo extends StatelessWidget {
+  final burnInfoKey = GlobalKey();
   final Function(String) onBurnCopy;
 
-  BurnInfo({required this.onBurnCopy});
+  BurnInfo({
+    required this.onBurnCopy,
+  });
 
   @override
   Widget build(BuildContext context) {
     var _size;
+    var _media;
 
     if (kIsWeb) {
       _size = 400.0;
     } else {
-      _size = MediaQuery.of(context).size.width;
+      _media = MediaQuery.of(context).size;
+      _size = _media.width;
     }
 
     return Align(
@@ -25,13 +30,17 @@ class BurnInfo extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: _media.height * 0.04)),
+
             // Logo
             Container(
               height: _size * 0.33,
               child: Image.asset("assets/burn_ada.gif"),
             ),
 
-            Padding(padding: EdgeInsets.symmetric(vertical: defaultPadding)),
+            Padding(
+                padding: EdgeInsets.only(
+                    bottom: _media.height / _size * defaultPadding)),
 
             // Message
             Container(
@@ -47,6 +56,7 @@ class BurnInfo extends StatelessWidget {
               ),
               padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
               width: _size * 0.6,
+              constraints: BoxConstraints(maxHeight: 48),
               child: Text(
                 "Send Ada to this address if you believe in ultra-sound money 🦇",
                 style: TextStyle(
@@ -57,20 +67,30 @@ class BurnInfo extends StatelessWidget {
               ),
             ),
 
-            Padding(padding: EdgeInsets.symmetric(vertical: defaultPadding)),
+            Padding(
+                padding: EdgeInsets.only(
+                    bottom: _media.height / _size * defaultPadding)),
 
-            // QR Code
-            Container(
-              color: Colors.white,
-              child: QrImage(
-                data: burn_addr,
-                version: QrVersions.auto,
-                size: _size * 0.6,
-                gapless: true,
-              ),
-            ),
+            kIsWeb
+                // QR Code
+                ? Container(
+                    color: Colors.white,
+                    child: QrImage(
+                      data: burn_addr,
+                      version: QrVersions.auto,
+                      size: _size * 0.6,
+                      gapless: true,
+                    ),
+                  )
+                :
+                // Wallet Apps
+                Container(
+                    child: WalletButtons(),
+                  ),
 
-            Padding(padding: EdgeInsets.symmetric(vertical: defaultPadding)),
+            Padding(
+                padding: EdgeInsets.only(
+                    bottom: _media.height / _size * defaultPadding)),
 
             // Address Text
             Container(

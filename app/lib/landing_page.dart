@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:burn_ada/constants.dart';
 import 'package:burn_ada/widgets/burn_info.dart';
 import 'package:burn_ada/widgets/donate_info.dart';

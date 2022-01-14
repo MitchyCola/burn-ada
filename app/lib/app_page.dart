@@ -1,14 +1,12 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:burn_ada/constants.dart';
 import 'package:burn_ada/widgets/burn_info.dart';
 import 'package:burn_ada/widgets/donate_info.dart';
 import 'package:burn_ada/widgets/socal_buttons.dart';
 import 'package:swipe/swipe.dart';
 import 'package:burn_ada/widgets/burn_ticker.dart';
+import 'package:measured_size/measured_size.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({Key? key}) : super(key: key);
@@ -20,6 +18,8 @@ class AppPage extends StatefulWidget {
 class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   // Change to true to show Donate Page
   bool _isShowDonate = false;
+
+  Size? mediaSize;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
@@ -57,6 +57,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var _safePadding = MediaQuery.of(context).padding.top;
     // It provides us screen height and width
     final _size = MediaQuery.of(context).size;
     return Scaffold(
@@ -112,33 +113,32 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
                 AnimatedPositioned(
                   duration: defaultDuration,
                   width: _size.width,
-                  bottom: defaultPadding * 5, // 10%
+                  bottom: pow(_size.height / _size.width, 3) *
+                      1.0, // Turn the power from a num to a double by multiplying by 1.0.
                   right:
                       _isShowDonate ? -_size.width * 0.06 : _size.width * 0.06,
-                  child: Column(
-                    children: [
-                      BurnTicker(size: _size.width * 0.528),
-                      Padding(padding: EdgeInsets.all(defaultPadding * 0.4)),
-                      Text(
-                        "How it works:",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SocalButtons(),
-                    ],
+                  child: MeasuredSize(
+                    onChange: (Size size) {
+                      setState(() {
+                        this.mediaSize = size;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        BurnTicker(size: _size.width * 0.528),
+                        Padding(padding: EdgeInsets.all(defaultPadding * 0.3)),
+                        SocalButtons(),
+                      ],
+                    ),
                   ),
                 ),
 
                 // Burn Text
                 AnimatedPositioned(
                   duration: defaultDuration,
-                  bottom: _isShowDonate
-                      ? _size.height / 2 - _size.width * 0.3
-                      : 17 * defaultPadding,
+                  top: _isShowDonate
+                      ? _size.height / 2 + _size.width * 0.3
+                      : _safePadding,
                   // when our Burn Info shows, we want our Donate text to right center
                   left: _isShowDonate
                       ? _size.width * 0.025
@@ -173,9 +173,9 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
                 // Donate Text
                 AnimatedPositioned(
                   duration: defaultDuration,
-                  bottom: !_isShowDonate
-                      ? _size.height / 2 - _size.width * 0.3
-                      : 17 * defaultPadding,
+                  top: !_isShowDonate
+                      ? _size.height / 2 + _size.width * 0.3
+                      : _safePadding,
                   // when our Donate shows we want our burn text to left center
                   right: _isShowDonate
                       ? _size.width * 0.44 - _size.width * 0.3
